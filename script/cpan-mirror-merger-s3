@@ -1,0 +1,36 @@
+#!perl
+use strict;
+use warnings;
+
+use CPAN::MirrorMerger::CLI::S3Storage;
+CPAN::MirrorMerger::CLI::S3Storage->new_with_argv(@ARGV)->run();
+
+__END__
+
+=pod
+
+=head1 NAME
+
+cpan-mirror-merger-s3 - CPAN Mirror merge tool for S3
+
+=head1 SYNOPSIS
+
+cpan-mirror-merger-s3 [options] [mirror_urls ...]
+
+ Options:
+   -h|--help                Brief help message
+   -v|--verbose             Verbose log
+   --aws-access-key-id      AWS Access Key ID (required, default: $AWS_ACCESS_KEY_ID)
+   --aws-secret-access-key  AWS Secret Access Key (required, default: $AWS_SECRET_ACCESS_KEY)
+   --aws-session-token      AWS Session Token (default: $AWS_SESSION_TOKEN)
+   --s3-timeout             S3 Timeout Seconds (defaults: 30s)
+   --s3-bucket-name         S3 Bucket Name (required)
+   --s3-bucket-region       S3 Bucket Region (required)
+   --mirror-cache-dir       Mirror cache directory (default: /tmp/CPAN-MirrorMerger)
+   --index-cache-timeout    Mirror index cache timeout seconds (default: 300s)
+   --request-timeout        HTTP request timeout seconds (default: 30s)
+   --max-retries            Max retry count
+   --retry-interval         Retry interval
+   --retry-jitter-factor    Retry jitter factor
+
+=cut
