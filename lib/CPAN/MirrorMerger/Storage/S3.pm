@@ -7,8 +7,10 @@ our $VERSION = "0.01";
 
 use Class::Accessor::Lite ro => [qw/retry_policy adapter/];
 
-use CPAN::MirrorMerger ();
 use Carp qw/croak/;
+use Path::Tiny ();
+
+use CPAN::MirrorMerger ();
 
 sub new {
     my ($class, %args) = @_;
@@ -21,6 +23,18 @@ sub copy {
     my ($self, $from_path, $save_key) = @_;
     $self->retry_policy->apply_and_doit(sub {
         $self->adapter->upload($from_path, $save_key);
+    });
+}
+
+sub fetch {
+    my ($self, $save_key) = @_;
+    return $self->retry_policy->apply_and_doit(sub {
+        my $tempfile = Path::Tiny->tempfile(UNLINK => 1);
+
+        my $downloaded = $self->adapter->download($save_key, $tempfile->cached_temp);
+        return unless $downloaded;
+
+        return $tempfile;
     });
 }
 

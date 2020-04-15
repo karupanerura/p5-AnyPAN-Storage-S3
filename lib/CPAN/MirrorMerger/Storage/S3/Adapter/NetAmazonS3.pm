@@ -12,6 +12,15 @@ sub upload {
     $obj->put_filename($from_path);
 }
 
+sub download {
+    my ($self, $save_key, $tempfile) = @_;
+    my $obj = $self->s3_bucket->object(key => $save_key);
+    return unless $obj->exists();
+
+    $obj->get_filename($tempfile);
+    return $tempfile;
+}
+
 1;
 __END__
 
