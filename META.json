@@ -64,6 +64,9 @@
       }
    },
    "version" : "0.01",
+   "x_contributors" : [
+      "Sato, Kenta <kenta.sato@dena.jp>"
+   ],
    "x_serialization_backend" : "JSON::PP version 4.04",
    "x_static_install" : 1
 }
