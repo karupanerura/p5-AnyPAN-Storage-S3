@@ -17,7 +17,7 @@ sub download {
     my $obj = $self->s3_bucket->object(key => $save_key);
     return unless $obj->exists();
 
-    $obj->get_filename($tempfile);
+    $obj->get_filename("$tempfile");
     return $tempfile;
 }
 
