@@ -26,6 +26,7 @@ cpan-mirror-merger-s3 [options] [mirror_urls ...]
    --s3-timeout             S3 Timeout Seconds (defaults: 30s)
    --s3-bucket-name         S3 Bucket Name (required)
    --s3-bucket-region       S3 Bucket Region (required)
+   --with-packages          Writes also the packages included in the merged CPAN index
    --mirror-cache-dir       Mirror cache directory (default: /tmp/CPAN-MirrorMerger)
    --index-cache-timeout    Mirror index cache timeout seconds (default: 300s)
    --request-timeout        HTTP request timeout seconds (default: 30s)
