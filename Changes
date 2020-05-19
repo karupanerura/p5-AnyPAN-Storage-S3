@@ -2,6 +2,11 @@ Revision history for Perl extension CPAN-MirrorMerger-Storage-S3
 
 {{$NEXT}}
 
+0.04 2020-05-19T12:29:37Z
+
+    - add exists method
+    - fix upload to index updating
+
 0.03 2020-05-13T09:01:37Z
 
     - add --with-packages option for CLI tool
