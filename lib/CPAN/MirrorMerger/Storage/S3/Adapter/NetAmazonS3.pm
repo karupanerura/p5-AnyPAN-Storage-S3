@@ -4,11 +4,15 @@ use warnings;
 
 use Class::Accessor::Lite ro => [qw/s3_bucket/], new => 1;
 
+sub exists :method {
+    my ($self, $key) = @_;
+    my $obj = $self->s3_bucket->object(key => $key);
+    return if $obj->exists();
+}
+
 sub upload {
     my ($self, $from_path, $save_key) = @_;
     my $obj = $self->s3_bucket->object(key => $save_key);
-    return if $obj->exists();
-
     $obj->put_filename($from_path);
 }
 

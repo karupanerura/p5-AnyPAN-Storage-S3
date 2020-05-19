@@ -26,6 +26,13 @@ sub copy {
     });
 }
 
+sub exists :method {
+    my ($self, $save_key) = @_;
+    return $self->retry_policy->apply_and_doit(sub {
+        return $self->adapter->exists($save_key);
+    });
+}
+
 sub fetch {
     my ($self, $save_key) = @_;
     return $self->retry_policy->apply_and_doit(sub {
