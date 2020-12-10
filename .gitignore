@@ -28,4 +28,4 @@ cover_db/
 
 MYMETA.*
 
-/CPAN-MirrorMerger-Storage-S3-*
+/AnyPAN-Storage-S3-*

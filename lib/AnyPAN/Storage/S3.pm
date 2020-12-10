@@ -1,4 +1,4 @@
-package CPAN::MirrorMerger::Storage::S3;
+package AnyPAN::Storage::S3;
 use 5.008001;
 use strict;
 use warnings;
@@ -10,12 +10,18 @@ use Class::Accessor::Lite ro => [qw/retry_policy adapter/];
 use Carp qw/croak/;
 use Path::Tiny ();
 
-use CPAN::MirrorMerger ();
+use AnyPAN::RetryPolicy::ExponentialBackoff;
+
+our $DEFAULT_RETRY_POLICY = AnyPAN::RetryPolicy::ExponentialBackoff->new(
+    max_retries   => 5,
+    interval      => 1,
+    jitter_factor => 0.05,
+);
 
 sub new {
     my ($class, %args) = @_;
     croak 'adapter required' unless defined $args{adapter};
-    $args{retry_policy} ||= $CPAN::MirrorMerger::DEFAULT_RETRY_POLICY;
+    $args{retry_policy} ||= $DEFAULT_RETRY_POLICY;
     bless \%args, $class;
 }
 
@@ -52,29 +58,29 @@ __END__
 
 =head1 NAME
 
-CPAN::MirrorMerger::Storage::S3 - CPAN::MirrorMerger storage plugin for Amazon S3
+AnyPAN::Storage::S3 - AnyPAN storage plugin for Amazon S3
 
 =head1 SYNOPSIS
 
-    use CPAN::MirrorMerger;
-    use CPAN::MirrorMerger::Storage::S3;
-    use CPAN::MirrorMerger::Storage::S3::Adapter::NetAmazonS3;
+    use AnyPAN::Merger;
+    use AnyPAN::Storage::S3;
+    use AnyPAN::Storage::S3::Adapter::NetAmazonS3;
     use Net::Amazon::S3;
 
     my $s3 = Net::Amazon::S3->new(...);
-    my $adapter = CPAN::MirrorMerger::Storage::S3::Adapter::NetAmazonS3->new(s3 => $s3);
-    my $storage = CPAN::MirrorMerger::Storage::S3->new(adapter => $adapter);
+    my $adapter = AnyPAN::Storage::S3::Adapter::NetAmazonS3->new(s3 => $s3);
+    my $storage = AnyPAN::Storage::S3->new(adapter => $adapter);
 
-    use CPAN::MirrorMerger::Storage::Directory;
+    use AnyPAN::Storage::Directory;
 
-    my $merger = CPAN::MirrorMerger->new();
-    $merger->add_mirror('http://backpan.cpantesters.org/');
-    $merger->add_mirror('https://cpan.metacpan.org/');
+    my $merger = AnyPAN::Merger->new();
+    $merger->add_source('http://backpan.cpantesters.org/');
+    $merger->add_source('https://cpan.metacpan.org/');
     $merger->merge()->save($storage);
 
 =head1 DESCRIPTION
 
-CPAN::MirrorMerger::Storage::S3 is L<CPAN::MirrorMerger> storage plugin for Amazon S3.
+AnyPAN::Storage::S3 is L<AnyPAN> storage plugin for Amazon S3.
 
 =head1 LICENSE
 

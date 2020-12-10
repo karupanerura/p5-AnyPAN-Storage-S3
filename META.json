@@ -1,5 +1,5 @@
 {
-   "abstract" : "CPAN::MirrorMerger storage plugin for Amazon S3",
+   "abstract" : "AnyPAN storage plugin for Amazon S3",
    "author" : [
       "karupanerura <karupa@cpan.org>"
    ],
@@ -12,7 +12,7 @@
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
       "version" : 2
    },
-   "name" : "CPAN-MirrorMerger-Storage-S3",
+   "name" : "AnyPAN-Storage-S3",
    "no_index" : {
       "directory" : [
          "t",
@@ -42,7 +42,7 @@
       },
       "runtime" : {
          "requires" : {
-            "CPAN::MirrorMerger" : "0.05",
+            "AnyPAN" : "0.09",
             "perl" : "5.008001"
          }
       },
@@ -55,13 +55,13 @@
    "release_status" : "unstable",
    "resources" : {
       "bugtracker" : {
-         "web" : "https://github.com/karupanerura/p5-CPAN-MirrorMerger-Storage-S3/issues"
+         "web" : "https://github.com/karupanerura/p5-AnyPAN-Storage-S3/issues"
       },
-      "homepage" : "https://github.com/karupanerura/p5-CPAN-MirrorMerger-Storage-S3",
+      "homepage" : "https://github.com/karupanerura/p5-AnyPAN-Storage-S3",
       "repository" : {
          "type" : "git",
-         "url" : "git://github.com/karupanerura/p5-CPAN-MirrorMerger-Storage-S3.git",
-         "web" : "https://github.com/karupanerura/p5-CPAN-MirrorMerger-Storage-S3"
+         "url" : "git://github.com/karupanerura/p5-AnyPAN-Storage-S3.git",
+         "web" : "https://github.com/karupanerura/p5-AnyPAN-Storage-S3"
       }
    },
    "version" : "0.04",

@@ -1,6 +1,8 @@
-Revision history for Perl extension CPAN-MirrorMerger-Storage-S3
+Revision history for Perl extension AnyPAN-Storage-S3
 
 {{$NEXT}}
+
+    - rename to AnyPAN from CPAN::MirrorMerger
 
 0.04 2020-05-19T12:29:37Z
 

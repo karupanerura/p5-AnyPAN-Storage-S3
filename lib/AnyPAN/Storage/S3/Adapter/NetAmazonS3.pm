@@ -1,4 +1,4 @@
-package CPAN::MirrorMerger::Storage::S3::Adapter::NetAmazonS3;
+package AnyPAN::Storage::S3::Adapter::NetAmazonS3;
 use strict;
 use warnings;
 
@@ -34,20 +34,20 @@ __END__
 
 =head1 NAME
 
-CPAN::MirrorMerger::Storage::S3::Adapter::NetAmazonS3 - Adapter for Net::Amazon::S3
+AnyPAN::Storage::S3::Adapter::NetAmazonS3 - Adapter for Net::Amazon::S3
 
 =head1 SYNOPSIS
 
-    use CPAN::MirrorMerger::Storage::S3;
-    use CPAN::MirrorMerger::Storage::S3::Adapter::NetAmazonS3;
+    use AnyPAN::Storage::S3;
+    use AnyPAN::Storage::S3::Adapter::NetAmazonS3;
     use Net::Amazon::S3;
     use Net::Amazon::S3::Client;
 
     my $s3 = Net::Amazon::S3->new(...);
     my $client = Net::Amazon::S3::Client->new(s3 => $s3);
     my $s3_bucket = $client->bucket(name => 'merged-cpan', region => 'us-east-1');
-    my $adapter = CPAN::MirrorMerger::Storage::S3::Adapter::NetAmazonS3->new(s3_bucket => $s3_bucket);
-    my $storage = CPAN::MirrorMerger::Storage::S3->new(adapter => $adapter);
+    my $adapter = AnyPAN::Storage::S3::Adapter::NetAmazonS3->new(s3_bucket => $s3_bucket);
+    my $storage = AnyPAN::Storage::S3->new(adapter => $adapter);
 
 =head1 DESCRIPTION
 
@@ -55,7 +55,7 @@ S3 adapter for L<Net::Amazon::S3>.
 
 =head1 SEE ALSO
 
-L<CPAN::MirrorMerger>
+L<AnyPAN>
 L<Net::Amazon::S3>
 
 =head1 LICENSE

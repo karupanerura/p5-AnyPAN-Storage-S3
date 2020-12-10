@@ -1,8 +1,8 @@
-package CPAN::MirrorMerger::CLI::S3Storage;
+package AnyPAN::CLI::S3Storage;
 use strict;
 use warnings;
 
-use parent qw/CPAN::MirrorMerger::CLI/;
+use parent qw/AnyPAN::CLI/;
 
 use Class::Accessor::Lite ro => [qw/
     aws_access_key_id
@@ -14,8 +14,8 @@ use Class::Accessor::Lite ro => [qw/
 /];
 
 use Pod::Usage qw/pod2usage/;
-use CPAN::MirrorMerger::Storage::S3;
-use CPAN::MirrorMerger::Storage::S3::Adapter::NetAmazonS3;
+use AnyPAN::Storage::S3;
+use AnyPAN::Storage::S3::Adapter::NetAmazonS3;
 
 sub create_option_specs {
     my $class = shift;
@@ -77,8 +77,8 @@ sub create_storage {
         name   => $self->s3_bucket_name,
         region => $self->s3_bucket_region,
     );
-    my $adapter = CPAN::MirrorMerger::Storage::S3::Adapter::NetAmazonS3->new(s3_bucket => $s3_bucket);
-    return CPAN::MirrorMerger::Storage::S3->new(adapter => $adapter);
+    my $adapter = AnyPAN::Storage::S3::Adapter::NetAmazonS3->new(s3_bucket => $s3_bucket);
+    return AnyPAN::Storage::S3->new(adapter => $adapter);
 }
 
 1;
