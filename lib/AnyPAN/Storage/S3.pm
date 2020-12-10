@@ -56,6 +56,8 @@ __END__
 
 =encoding utf-8
 
+=for stopwords AnyPAN
+
 =head1 NAME
 
 AnyPAN::Storage::S3 - AnyPAN storage plugin for Amazon S3
